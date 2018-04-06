@@ -1,1 +1,1 @@
-ckanext-location
+# ckanext-resource-location
