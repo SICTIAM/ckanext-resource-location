@@ -107,7 +107,7 @@ def geores(file, data_dict):
     with open(file, 'r') as csvin:
         try:
             # extra protection here to avoid crashing the whole server
-            csvreader = csv.DictReader(csvin, delimiter=';')
+            csvreader = csv.DictReader(csvin, delimiter=',')
         except Exception as err:
             log.error('An error happened while reading the file : {0}, file will only be saved'.format(err))
             return
@@ -162,7 +162,7 @@ def geores(file, data_dict):
     result = pool.imap(geocode, addresses)
 
     with open(file, 'wb') as csvout:
-        csvwriter = csv.DictWriter(csvout, fieldnames, delimiter=';')
+        csvwriter = csv.DictWriter(csvout, fieldnames, delimiter=',')
         csvwriter.writeheader()
 
         for record, coordinates in zip(records, result):
